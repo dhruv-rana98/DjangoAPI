@@ -8,6 +8,7 @@ class Admin(models.Model):
     AdminId = models.AutoField(primary_key=True)
     AdminName = models.CharField(max_length=500)
     AdminPassword = models.CharField(max_length=30)
+    isAdmin = models.BooleanField(False)
 
 
 class Book(models.Model):
