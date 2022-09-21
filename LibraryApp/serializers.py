@@ -1,5 +1,4 @@
 from dataclasses import field, fields
-import imp
 from pyexpat import model
 from rest_framework import serializers
 from LibraryApp.models import Admin, Book
@@ -8,7 +7,8 @@ from LibraryApp.models import Admin, Book
 class AdminSerializers(serializers.ModelSerializer):
     class Meta:
         model = Admin
-        fields = ('AdminId', 'AdminName', 'AdminPassword', 'isAdmin')
+        fields = ('AdminId', 'AdminName', 'AdminPassword',
+                  'AdminEmail', 'isAdmin')
 
 
 class BookSerializers(serializers.ModelSerializer):

@@ -8,6 +8,7 @@ class Admin(models.Model):
     AdminId = models.AutoField(primary_key=True)
     AdminName = models.CharField(max_length=500)
     AdminPassword = models.CharField(max_length=30)
+    AdminEmail = models.EmailField(max_length=45)
     isAdmin = models.BooleanField(False)
 
 
