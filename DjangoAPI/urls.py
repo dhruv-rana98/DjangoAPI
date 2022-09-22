@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^books$', views.bookApi),
     re_path(r'^books/([0-9]+)$', views.bookApi),
-    re_path(r'^users$', views.adminApi)
+    re_path(r'^users$', views.adminApi),
+    re_path(r'^users/([0-9]+)$', views.adminApi),
 ]

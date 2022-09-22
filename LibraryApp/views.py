@@ -36,7 +36,7 @@ def bookApi(request, id=0):
 
 
 @csrf_exempt
-def adminApi(request):
+def adminApi(request, id=0):
     if request.method == 'GET':
         admin = Admin.objects.all()
         admin_serializer = AdminSerializers(admin, many=True)
@@ -48,3 +48,15 @@ def adminApi(request):
             admin_serializer.save()
             return JsonResponse("User Added Successfully", safe=False)
         return JsonResponse("Failed to add the user", safe=False)
+    elif request.method == 'PUT':
+        admindata = JSONParser().parse(request)
+        admin = Admin.objects.get(AdminId=admindata['AdminId'])
+        admin_serializer = AdminSerializers(admin, data=admindata)
+        if admin_serializer.is_valid():
+            admin_serializer.save()
+            return JsonResponse("User modified successfully", safe=False)
+        return JsonResponse("Failed to modify user", safe=False)
+    elif request.method == 'DELETE':
+        admin = Admin.objects.get(AdminId=id)
+        admin.delete()
+        return JsonResponse('Admin Deleted Successfully',  safe=False)
